@@ -17,11 +17,11 @@ public class TestSemaphore {
 
 		public void run() {
 			try {
-				// »ñÈ¡Ğí¿É
+				// è·å–è®¸å¯
 				semp.acquire();
 				Log.printf("Accessing: " + NO);
 				Thread.sleep((long) (Math.random() * 10000));
-				// ·ÃÎÊÍêºó£¬ÊÍ·Å £¬Èç¹ûÆÁ±ÎÏÂÃæµÄÓï¾ä£¬ÔòÔÚ¿ØÖÆÌ¨Ö»ÄÜ´òÓ¡5Ìõ¼ÇÂ¼£¬Ö®ºóÏß³ÌÒ»Ö±×èÈû
+				// è®¿é—®å®Œåï¼Œé‡Šæ”¾ ï¼Œå¦‚æœå±è”½ä¸‹é¢çš„è¯­å¥ï¼Œåˆ™åœ¨æ§åˆ¶å°åªèƒ½æ‰“å°5æ¡è®°å½•ï¼Œä¹‹åçº¿ç¨‹ä¸€ç›´é˜»å¡
 				semp.release();
 			} catch (InterruptedException e) {
 			}
@@ -29,16 +29,39 @@ public class TestSemaphore {
 	};
 
 	public static void main(String[] args) {
-		// Ïß³Ì³Ø
+		// çº¿ç¨‹æ± 
 		ExecutorService exec = Executors.newCachedThreadPool();
-		// Ö»ÄÜ5¸öÏß³ÌÍ¬Ê±·ÃÎÊ
+		// åªèƒ½5ä¸ªçº¿ç¨‹åŒæ—¶è®¿é—®
 		final Semaphore semp = new Semaphore(5);
-//		final Semaphore semp = new Semaphore(5, true);//ÏÈ½øÏÈ³ö
-		// Ä£Äâ20¸ö¿Í»§¶Ë·ÃÎÊ
+//		final Semaphore semp = new Semaphore(5, true);//å…ˆè¿›å…ˆå‡º
+		// æ¨¡æ‹Ÿ20ä¸ªå®¢æˆ·ç«¯è®¿é—®
 		for (int index = 0; index < 20; index++) {
 			exec.execute(new MyRunnable(semp, index));
 		}
-		// ÍË³öÏß³Ì³Ø
+		// é€€å‡ºçº¿ç¨‹æ± 
 		exec.shutdown();
 	}
 }
+
+/*
+2017-07-10 22:41:25 :Accessing: 2
+2017-07-10 22:41:25 :Accessing: 4
+2017-07-10 22:41:25 :Accessing: 1
+2017-07-10 22:41:25 :Accessing: 0
+2017-07-10 22:41:25 :Accessing: 3
+2017-07-10 22:41:25 :Accessing: 5
+2017-07-10 22:41:26 :Accessing: 6
+2017-07-10 22:41:28 :Accessing: 7
+2017-07-10 22:41:29 :Accessing: 8
+2017-07-10 22:41:29 :Accessing: 9
+2017-07-10 22:41:31 :Accessing: 10
+2017-07-10 22:41:31 :Accessing: 11
+2017-07-10 22:41:34 :Accessing: 12
+2017-07-10 22:41:35 :Accessing: 13
+2017-07-10 22:41:36 :Accessing: 14
+2017-07-10 22:41:37 :Accessing: 15
+2017-07-10 22:41:39 :Accessing: 16
+2017-07-10 22:41:39 :Accessing: 17
+2017-07-10 22:41:40 :Accessing: 18
+2017-07-10 22:41:41 :Accessing: 19
+*/
