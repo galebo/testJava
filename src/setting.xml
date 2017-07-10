@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+    
+<settings >  
+        
+    <!--本地仓库。该值表示构建系统本地仓库的路径。其默认值为${user.home}/.m2/repository。  -->  
+    <localRepository>F://maven-repository</localRepository>  
+        
+</settings> 
