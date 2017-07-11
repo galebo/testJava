@@ -1,10 +1,12 @@
-package com.galebo.test;
+package com.galebo.test.queue;
 
 import java.util.Date;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public class TestBlockingQueue {
+import com.galebo.test.Log;
+
+public class TestArrayBlockingQueue {
 	static class Message {
 		private String msg;
 
