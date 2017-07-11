@@ -5,11 +5,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import com.galebo.test.Log;
+
 /**
  * 多线程模拟实现生产者／消费者模型
- *  
- * @author 林计钦
- * @version 1.0 2013-7-25 下午05:23:11
  */
 public class TestLinkedBlockQueue {
     /**
@@ -30,6 +29,7 @@ public class TestLinkedBlockQueue {
         // 消费苹果，从篮子中取走
         public String consume() throws InterruptedException {
             // take方法取出一个苹果，若basket为空，等到basket有苹果为止(获取并移除此队列的头部)
+        	Log.printf(""+basket.size());
             return basket.take();
         }
     }
@@ -46,16 +46,17 @@ public class TestLinkedBlockQueue {
 
         public void run() {
             try {
-                while (true) {
+            	int i=0;
+                while (i++<10) {
                     // 生产苹果
-                    System.out.println("生产者准备生产苹果：" + instance);
+                    Log.printf("$$生产者准备生产苹果：" + instance);
                     basket.produce();
-                    System.out.println("!生产者生产苹果完毕：" + instance);
+                    Log.printf("$$生产者生产苹果完毕：" + instance);
                     // 休眠300ms
                     Thread.sleep(300);
                 }
             } catch (InterruptedException ex) {
-                System.out.println("Producer Interrupted");
+                Log.printf("Producer Interrupted");
             }
         }
     }
@@ -74,14 +75,14 @@ public class TestLinkedBlockQueue {
             try {
                 while (true) {
                     // 消费苹果
-                    System.out.println("消费者准备消费苹果：" + instance);
-                    System.out.println(basket.consume());
-                    System.out.println("!消费者消费苹果完毕：" + instance);
+                    Log.printf("==消费者准备消费苹果：" + instance);
+                    Log.printf(basket.consume());
+                    Log.printf("==消费者消费苹果完毕：" + instance);
                     // 休眠1000ms
                     Thread.sleep(1000);
                 }
             } catch (InterruptedException ex) {
-                System.out.println("Consumer Interrupted");
+                Log.printf("Consumer Interrupted");
             }
         }
     }

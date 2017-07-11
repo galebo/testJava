@@ -3,6 +3,8 @@ package com.galebo.test.queue;
 import java.util.Date;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import com.galebo.test.Log;
 
@@ -75,13 +77,15 @@ public class TestArrayBlockingQueue {
 
 	public static void main(String[] args) {
 		// Creating BlockingQueue of size 10
+        ExecutorService service = Executors.newCachedThreadPool();
 		BlockingQueue<Message> queue = new ArrayBlockingQueue<Message>(10);
-		Producer producer = new Producer(queue);
+		Producer producer1 = new Producer(queue);
 		Consumer consumer = new Consumer(queue);
 		// starting producer to produce messages in queue
-		new Thread(producer).start();
+		service.submit(producer1);
 		// starting consumer to consume messages from queue
-		new Thread(consumer).start();
+		service.submit(consumer);
+		service.shutdown();
 		Log.printf("Producer and Consumer has been started");
 	}
 

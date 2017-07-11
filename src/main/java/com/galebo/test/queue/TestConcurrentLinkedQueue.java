@@ -38,9 +38,6 @@ public class TestConcurrentLinkedQueue {
 
     /**
      * 消费
-     *  
-     * @author 林计钦
-     * @version 1.0 2013-7-25 下午05:32:56
      */
     static class Poll implements Runnable {
         public void run() {
