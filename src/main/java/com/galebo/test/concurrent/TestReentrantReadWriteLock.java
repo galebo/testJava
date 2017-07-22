@@ -1,9 +1,11 @@
-package com.galebo.test;
+package com.galebo.test.concurrent;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;  
+
+import com.galebo.test.Log;
   
 /** 
  * @author: yanxuxin 

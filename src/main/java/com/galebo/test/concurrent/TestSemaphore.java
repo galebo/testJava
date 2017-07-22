@@ -1,8 +1,10 @@
-package com.galebo.test;
+package com.galebo.test.concurrent;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
+
+import com.galebo.test.Log;
 
 public class TestSemaphore {
 	static class MyRunnable implements Runnable {

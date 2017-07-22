@@ -1,9 +1,11 @@
-package com.galebo.test;
+package com.galebo.test.concurrent;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
+import com.galebo.test.Log;
 
 class Participant implements Runnable {
 	private final CountDownLatch countDownLatch;

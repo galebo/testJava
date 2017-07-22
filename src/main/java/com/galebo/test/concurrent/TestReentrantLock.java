@@ -1,4 +1,4 @@
-package com.galebo.test;
+package com.galebo.test.concurrent;
 
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
@@ -7,6 +7,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+
+import com.galebo.test.Log;
 
 public class TestReentrantLock {
 

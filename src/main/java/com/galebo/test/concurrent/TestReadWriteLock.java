@@ -1,10 +1,12 @@
-package com.galebo.test;
+package com.galebo.test.concurrent;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+import com.galebo.test.Log;
 
 public class TestReadWriteLock {
 

@@ -1,9 +1,11 @@
-package com.galebo.test;
+package com.galebo.test.concurrent;
 
 import java.util.Date;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import com.galebo.test.Log;
 
 public class TestCyclicBarrier {
 

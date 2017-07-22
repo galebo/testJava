@@ -1,4 +1,4 @@
-package com.galebo.test;
+package com.galebo.test.concurrent;
 
 import java.io.IOException;
 import java.util.Random;
@@ -6,6 +6,8 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import com.galebo.test.Log;
 
 public class TestCyclicBarrier2 {
 
