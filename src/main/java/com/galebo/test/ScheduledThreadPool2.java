@@ -19,6 +19,7 @@ public class ScheduledThreadPool2 {
 		for(int i=0; i<3; i++){
 			WorkerThread worker = new WorkerThread("do heavy processing");
 			scheduledThreadPool.schedule(worker, 10, TimeUnit.SECONDS);
+			//10秒钟以后执行
 		}
 		
 		//add some delay to let some threads spawn by scheduler

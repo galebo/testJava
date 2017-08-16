@@ -44,7 +44,8 @@ public class ScheduledThreadPool {
 		Log.printf("Current Time = "+new Date());
 		for(int i=0; i<3; i++){
 			WorkerThread worker = new WorkerThread("do heavy processing");
-			scheduledThreadPool.scheduleAtFixedRate(worker,0, 10, TimeUnit.SECONDS);
+			scheduledThreadPool.scheduleAtFixedRate(worker,8, 10, TimeUnit.SECONDS);
+			//第一次延迟8秒后执行，开始后10秒钟以后再次启动执行
 		}
 		
 		//add some delay to let some threads spawn by scheduler

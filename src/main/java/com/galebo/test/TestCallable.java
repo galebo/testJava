@@ -1,7 +1,6 @@
 package com.galebo.test;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -14,7 +13,9 @@ public class TestCallable{
 	
 	    @Override
 	    public String call() throws Exception {
+	    	Log.printf(Thread.currentThread().getName()+",start");
 	        Thread.sleep(1000);
+	    	Log.printf(Thread.currentThread().getName()+",end");
 	        //return the thread name executing this callable task
 	        return Thread.currentThread().getName();
 	    }
@@ -26,17 +27,18 @@ public class TestCallable{
         List<Future<String>> list = new ArrayList<Future<String>>();
         //Create MyCallable instance
         Callable<String> callable = new MyCallable();
-        for(int i=0; i< 100; i++){
+        for(int i=0; i< 10; i++){
             //submit Callable tasks to be executed by thread pool
             Future<String> future = executor.submit(callable);
             //add Future to the list, we can get return value using Future
             list.add(future);
         }
+    	Log.printf(Thread.currentThread().getName()+",exe");
         for(Future<String> fut : list){
             try {
                 //print the return value of Future, notice the output delay in console
                 // because Future.get() waits for task to get completed
-                Log.printf(new Date()+ "::"+fut.get());
+                Log.printf("====result:"+fut.get());
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
